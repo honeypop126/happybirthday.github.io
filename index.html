@@ -1,150 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Birthday my Badrul Munir!!</title>
   <style>
     body {
       margin: 0;
-      background: linear-gradient(#e6f5e6, #ffe6f0);
-      font-family: 'Comic Sans MS', cursive, sans-serif;
+      padding: 0;
+      font-family: 'Times New Roman', serif;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
       overflow: hidden;
+      position: relative;
     }
 
     h1 {
       text-align: center;
+      font-size: 2.8em;
+      color: #00796b;
       margin-top: 40px;
-      font-size: 3em;
-      color: #8b5e83;
     }
 
-    .envelope {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    #envelope {
       width: 200px;
-      height: 150px;
-      background: #ffc0cb;
-      border: 2px solid #8b5e83;
-      border-radius: 10px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.4s ease;
-    }
-
-    .envelope.open {
-      transform: translate(-50%, -50%) rotateX(180deg);
-    }
-
-    .card {
-      display: none;
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      border: 2px solid #8b5e83;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      z-index: 10;
-    }
-
-    .card.show {
       display: block;
+      margin: 50px auto 0;
+      transition: transform 0.5s;
+      z-index: 2;
     }
 
-    .button-group button {
+    #card {
+      display: none;
+      background: white;
+      color: #00796b;
+      text-align: center;
+      padding: 25px;
+      border-radius: 15px;
+      width: 320px;
+      margin: 20px auto;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      font-size: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn {
+      padding: 10px 25px;
       margin: 10px;
-      padding: 10px 20px;
       border: none;
-      border-radius: 5px;
-      background-color: #ffccdd;
+      border-radius: 10px;
+      background: #b3e5fc;
+      color: #01579b;
+      font-weight: bold;
       cursor: pointer;
-      font-size: 1em;
+      font-family: 'Times New Roman', serif;
     }
 
-    .button-group button:hover {
-      background-color: #ffc0cb;
+    .btn:hover {
+      background: #81d4fa;
     }
 
-    .border-vines {
-      position: fixed;
-      border: 10px solid transparent;
-      pointer-events: none;
-      background-image: url('https://i.imgur.com/k6Qa4gR.png'); /* Replace with vine image */
-      background-repeat: repeat;
-      background-size: contain;
-      z-index: 0;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-
-    .butterfly, .bee {
+    /* Flying bees and butterflies */
+    .flyer {
       position: absolute;
-      width: 40px;
-      animation: fly 10s linear infinite;
-    }
-
-    .bee {
-      width: 30px;
+      width: 50px;
+      height: 50px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: fly 30s linear infinite;
+      z-index: 1;
     }
 
     @keyframes fly {
-      0% { transform: translate(-10vw, 10vh); }
-      50% { transform: translate(100vw, 50vh); }
-      100% { transform: translate(-10vw, 90vh); }
+      0% { transform: translateX(-100px) translateY(0); }
+      100% { transform: translateX(110vw) translateY(100vh); }
+    }
+
+    /* Decorative vine borders */
+    .vine-border {
+      position: absolute;
+      width: 100%;
+      height: 80px;
+      background-image: url('https://i.imgur.com/6D2mOfC.png');
+      background-repeat: repeat-x;
+      background-size: contain;
+      z-index: 0;
+    }
+
+    .vine-top {
+      top: 0;
+    }
+
+    .vine-bottom {
+      bottom: 0;
+      transform: rotate(180deg);
+    }
+
+    #invitation {
+      display: none;
+      text-align: center;
+      padding: 50px;
+      color: #01579b;
+    }
+
+    #invitation h2 {
+      font-size: 2.5em;
+    }
+
+    #invitation p {
+      font-size: 1.6em;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <h1>Happy Birthday my Badrul Munir!!</h1>
+  <!-- Decorations -->
+  <div class="vine-border vine-top"></div>
+  <div class="vine-border vine-bottom"></div>
 
-  <div class="envelope" onclick="openEnvelope()">
-    💌
-  </div>
+  <!-- Butterflies and Bees -->
+  <div class="flyer" style="top: 10%; left: -60px; background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/23/Animated-butterfly-image.gif'); animation-delay: 0s;"></div>
+  <div class="flyer" style="top: 40%; left: -80px; background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/23/Animated-butterfly-image.gif'); animation-delay: 4s;"></div>
+  <div class="flyer" style="top: 70%; left: -100px; background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4c/Bee-animated.gif'); animation-delay: 8s;"></div>
 
-  <div class="card" id="card">
+  <!-- Main Title -->
+  <h1 id="main-title">Happy Birthday my Badrul Munir!!</h1>
+
+  <!-- Envelope -->
+  <img id="envelope" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Envelope_font_awesome.svg/2048px-Envelope_font_awesome.svg.png" alt="Envelope"/>
+
+  <!-- Popup Card -->
+  <div id="card">
     <p>Will you go on a date with me?</p>
-    <div class="button-group">
-      <button onclick="goToYesPage()">Yes</button>
-      <button onclick="alert('You are blocked')">No</button>
-    </div>
+    <button class="btn" onclick="yesClicked()">Yes</button>
+    <button class="btn" onclick="noClicked()">No</button>
   </div>
 
-  <div class="border-vines"></div>
-
-  <!-- Animated Butterflies and Bees -->
-  <img src="https://i.imgur.com/4AiXzf8.png" class="butterfly" style="top: 10%; left: -5%; animation-delay: 0s;">
-  <img src="https://i.imgur.com/4AiXzf8.png" class="butterfly" style="top: 40%; left: -10%; animation-delay: 3s;">
-  <img src="https://i.imgur.com/Oy9X4JG.png" class="bee" style="top: 30%; left: -5%; animation-delay: 2s;">
-  <img src="https://i.imgur.com/Oy9X4JG.png" class="bee" style="top: 70%; left: -10%; animation-delay: 5s;">
+  <!-- Invitation Content (hidden at first) -->
+  <div id="invitation">
+    <h2>Yay! It's a date then</h2>
+    <p>
+      💖<br/>
+      Date: 9 August 2025 (Obviously)<br/>
+      Time: Around 4:00 PM<br/>
+      Dresscode: Something Black that match me (I'll wear skirt)
+    </p>
+  </div>
 
   <script>
-    function openEnvelope() {
-      document.querySelector('.envelope').classList.add('open');
+    const envelope = document.getElementById('envelope');
+    const card = document.getElementById('card');
+    const invitation = document.getElementById('invitation');
+    const title = document.getElementById('main-title');
+
+    envelope.addEventListener('click', () => {
+      envelope.style.transform = 'rotateY(180deg)';
       setTimeout(() => {
-        document.getElementById('card').classList.add('show');
+        card.style.display = 'block';
       }, 500);
+    });
+
+    function noClicked() {
+      alert("You are blocked");
     }
 
-    function goToYesPage() {
-      document.write(`
-        <body style="background: #ffe6f0; font-family: 'Comic Sans MS', cursive;">
-          <h1 style="text-align: center; margin-top: 40px; color: #8b5e83;">Yay! it's a date then</h1>
-          <div style="text-align: center; font-size: 1.5em; color: #333; margin-top: 20px;">
-            <p>Date: 9 August 2025 (Obviously)</p>
-            <p>Time: Around 4:00 PM</p>
-            <p>Dresscode: Something Black that match me (I'll wear skirt)</p>
-          </div>
-        </body>
-      `);
+    function yesClicked() {
+      // Hide everything else
+      envelope.style.display = "none";
+      card.style.display = "none";
+      title.style.display = "none";
+
+      // Show the date invitation
+      invitation.style.display = "block";
     }
   </script>
 </body>
