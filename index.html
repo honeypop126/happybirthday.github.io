@@ -22,6 +22,26 @@
       margin-top: 40px;
     }
 
+    #clickBox {
+      margin-top: 60px;
+    }
+
+    #clickBtn {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      font-family: 'Times New Roman', serif;
+      background-color: #b3e5fc;
+      color: #01579b;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #clickBtn:hover {
+      background-color: #81d4fa;
+    }
+
     #heart {
       width: 120px;
       height: 120px;
@@ -29,8 +49,8 @@
       background-size: cover;
       background-position: center;
       cursor: pointer;
-      display: block;
-      margin: 50px auto 0;
+      display: none;
+      margin: 30px auto 0;
       transition: transform 0.5s;
       z-index: 2;
     }
@@ -98,7 +118,7 @@
     body::before { top: 0; }
     body::after { bottom: 0; }
 
-    /* Invitation message (hidden initially) */
+    /* Invitation message */
     #invitation {
       display: none;
       font-family: 'Times New Roman', serif;
@@ -113,6 +133,11 @@
 <body>
   <h1>Happy Birthday my Badrul Munir!!</h1>
 
+  <!-- Click Box -->
+  <div id="clickBox">
+    <button id="clickBtn" onclick="showHeart()">Click Here</button>
+  </div>
+
   <!-- Heart -->
   <div id="heart" title="Click me 💙"></div>
 
@@ -123,7 +148,7 @@
     <button class="btn" onclick="noClicked()">No</button>
   </div>
 
-  <!-- Invitation Message -->
+  <!-- Invitation -->
   <div id="invitation">
     <h2>Yay! It's a date then 💕</h2>
     <p>
@@ -142,6 +167,12 @@
     const heart = document.getElementById('heart');
     const card = document.getElementById('card');
     const invitation = document.getElementById('invitation');
+    const clickBox = document.getElementById('clickBox');
+
+    function showHeart() {
+      heart.style.display = 'block';
+      clickBox.style.display = 'none';
+    }
 
     heart.addEventListener('click', () => {
       heart.style.transform = 'scale(1.2)';
