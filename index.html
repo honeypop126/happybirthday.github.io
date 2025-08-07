@@ -1,125 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday my Badrul Munir!!</title>
   <style>
     body {
       margin: 0;
-      font-family: "Times New Roman", serif;
-      background: linear-gradient(to bottom right, #d6f5d6, #fbe0f0);
+      background: linear-gradient(#e6f5e6, #ffe6f0);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
       overflow: hidden;
-      text-align: center;
-      position: relative;
     }
 
     h1 {
-      color: #a05287;
-      padding: 20px;
-      font-size: 2.5rem;
+      text-align: center;
+      margin-top: 40px;
+      font-size: 3em;
+      color: #8b5e83;
     }
 
-    #envelope {
-      width: 150px;
+    .envelope {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 150px;
+      background: #ffc0cb;
+      border: 2px solid #8b5e83;
+      border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s ease;
     }
 
-    #envelope:hover {
-      transform: scale(1.1);
+    .envelope.open {
+      transform: translate(-50%, -50%) rotateX(180deg);
     }
 
     .card {
       display: none;
       position: absolute;
-      top: 50%;
+      top: 60%;
       left: 50%;
       transform: translate(-50%, -50%);
       background: white;
-      border: 2px solid #a05287;
+      border: 2px solid #8b5e83;
       padding: 20px;
       border-radius: 10px;
-      z-index: 2;
-      width: 300px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      z-index: 10;
     }
 
-    .card p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
+    .card.show {
+      display: block;
     }
 
     .button-group button {
+      margin: 10px;
       padding: 10px 20px;
-      margin: 0 10px;
-      background-color: pink;
       border: none;
       border-radius: 5px;
-      font-size: 1rem;
+      background-color: #ffccdd;
       cursor: pointer;
+      font-size: 1em;
+    }
+
+    .button-group button:hover {
+      background-color: #ffc0cb;
     }
 
     .border-vines {
-      position: absolute;
+      position: fixed;
+      border: 10px solid transparent;
+      pointer-events: none;
+      background-image: url('https://i.imgur.com/k6Qa4gR.png'); /* Replace with vine image */
+      background-repeat: repeat;
+      background-size: contain;
+      z-index: 0;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background: url('https://i.imgur.com/CNQnWc0.png') repeat;
-      opacity: 0.2;
-      z-index: 0;
+      right: 0;
+      bottom: 0;
     }
 
     .butterfly, .bee {
       position: absolute;
-      width: 50px;
-      animation: fly 20s linear infinite;
+      width: 40px;
+      animation: fly 10s linear infinite;
     }
 
     .bee {
-      animation-duration: 25s;
+      width: 30px;
     }
 
     @keyframes fly {
-      0%   { transform: translateX(-10%) translateY(0); }
-      50%  { transform: translateX(110vw) translateY(50vh); }
-      100% { transform: translateX(-10%) translateY(0); }
+      0% { transform: translate(-10vw, 10vh); }
+      50% { transform: translate(100vw, 50vh); }
+      100% { transform: translate(-10vw, 90vh); }
     }
   </style>
 </head>
 <body>
   <h1>Happy Birthday my Badrul Munir!!</h1>
 
-  <div id="main-content">
-    <img id="envelope" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Envelope_font_awesome.svg/2048px-Envelope_font_awesome.svg.png" alt="Envelope" onclick="showCard()">
+  <div class="envelope" onclick="openEnvelope()">
+    💌
+  </div>
 
-    <div class="card" id="card">
-      <p>Will you go on a date with me?</p>
-      <div class="button-group">
-        <button onclick="yesClicked()">Yes</button>
-        <button onclick="noClicked()">No</button>
-      </div>
+  <div class="card" id="card">
+    <p>Will you go on a date with me?</p>
+    <div class="button-group">
+      <button onclick="goToYesPage()">Yes</button>
+      <button onclick="alert('You are blocked')">No</button>
     </div>
   </div>
 
   <div class="border-vines"></div>
 
-  <img class="butterfly" src="https://i.imgur.com/J0JtZ5L.png" style="top:10%; left:-60px;">
-  <img class="bee" src="https://i.imgur.com/wYqLZQW.png" style="top:30%; left:-60px;">
+  <!-- Animated Butterflies and Bees -->
+  <img src="https://i.imgur.com/4AiXzf8.png" class="butterfly" style="top: 10%; left: -5%; animation-delay: 0s;">
+  <img src="https://i.imgur.com/4AiXzf8.png" class="butterfly" style="top: 40%; left: -10%; animation-delay: 3s;">
+  <img src="https://i.imgur.com/Oy9X4JG.png" class="bee" style="top: 30%; left: -5%; animation-delay: 2s;">
+  <img src="https://i.imgur.com/Oy9X4JG.png" class="bee" style="top: 70%; left: -10%; animation-delay: 5s;">
 
   <script>
-    function showCard() {
-      document.getElementById("card").style.display = "block";
+    function openEnvelope() {
+      document.querySelector('.envelope').classList.add('open');
+      setTimeout(() => {
+        document.getElementById('card').classList.add('show');
+      }, 500);
     }
 
-    function yesClicked() {
-      window.location.href = "date.html";
-    }
-
-    function noClicked() {
-      alert("You are blocked.");
+    function goToYesPage() {
+      document.write(`
+        <body style="background: #ffe6f0; font-family: 'Comic Sans MS', cursive;">
+          <h1 style="text-align: center; margin-top: 40px; color: #8b5e83;">Yay! it's a date then</h1>
+          <div style="text-align: center; font-size: 1.5em; color: #333; margin-top: 20px;">
+            <p>Date: 9 August 2025 (Obviously)</p>
+            <p>Time: Around 4:00 PM</p>
+            <p>Dresscode: Something Black that match me (I'll wear skirt)</p>
+          </div>
+        </body>
+      `);
     }
   </script>
 </body>
