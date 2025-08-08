@@ -4,33 +4,47 @@
   <meta charset="UTF-8" />
   <title>Happy Birthday my Badrul Munir!!</title>
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
       font-family: 'Times New Roman', serif;
       background: linear-gradient(to bottom, #dceefb, #ffffff);
       overflow: hidden;
-      position: relative;
-      border: 20px solid transparent;
       box-sizing: border-box;
+    }
+
+    body {
+      border: 20px solid transparent;
+      position: relative;
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       text-align: center;
+      z-index: 1;
+      position: relative;
     }
 
     h1 {
       font-size: 3em;
       color: #0277bd;
-      margin-top: 40px;
+      margin-bottom: 40px;
     }
 
     #clickBox {
       display: inline-block;
-      margin-top: 60px;
       padding: 40px;
       border: 3px dashed #81d4fa;
       border-radius: 15px;
       background: #e1f5fe;
       cursor: pointer;
       transition: transform 0.3s;
+      margin-bottom: 20px;
     }
 
     #clickBox:hover {
@@ -46,7 +60,6 @@
       cursor: pointer;
       color: #01579b;
       font-weight: bold;
-      font-family: 'Times New Roman', serif;
     }
 
     #card {
@@ -57,11 +70,7 @@
       padding: 20px;
       border-radius: 15px;
       width: 320px;
-      margin: 20px auto;
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      font-family: 'Times New Roman', serif;
-      position: relative;
-      z-index: 2;
     }
 
     .btn {
@@ -73,11 +82,18 @@
       color: #01579b;
       font-weight: bold;
       cursor: pointer;
-      font-family: 'Times New Roman', serif;
     }
 
     .btn:hover {
       background: #829fbf;
+    }
+
+    #invitation {
+      display: none;
+      color: #01579b;
+      font-size: 1.4em;
+      margin-top: 20px;
+      padding: 20px;
     }
 
     .flyer {
@@ -109,40 +125,33 @@
 
     body::before { top: 0; }
     body::after { bottom: 0; }
-
-    #invitation {
-      display: none;
-      font-family: 'Times New Roman', serif;
-      color: #01579b;
-      font-size: 1.4em;
-      margin-top: 30px;
-      padding: 20px;
-    }
   </style>
 </head>
 <body>
-  <h1>Happy Birthday my Badrul Munir!!</h1>
+  <div id="container">
+    <h1>Happy Birthday my Badrul Munir!!</h1>
 
-  <!-- Click Box -->
-  <div id="clickBox">
-    <button id="clickButton">Click Here 💙</button>
-  </div>
+    <!-- Click Box -->
+    <div id="clickBox">
+      <button id="clickButton">Click Here 💙</button>
+    </div>
 
-  <!-- Card -->
-  <div id="card">
-    <p>Will you go on a date with me?</p>
-    <button class="btn" onclick="yesClicked()">Yes</button>
-    <button class="btn" onclick="noClicked()">No</button>
-  </div>
+    <!-- Card -->
+    <div id="card">
+      <p>Will you go on a date with me?</p>
+      <button class="btn" onclick="yesClicked()">Yes</button>
+      <button class="btn" onclick="noClicked()">No</button>
+    </div>
 
-  <!-- Invitation -->
-  <div id="invitation">
-    <h2>Yay! It's a date then 💕</h2>
-    <p>
-      Date: 9 August 2025 (Obviously)<br>
-      Time: Around 3:30 PM<br>
-      Dresscode: Something Black that matches me!!
-    </p>
+    <!-- Invitation -->
+    <div id="invitation">
+      <h2>Yay! It's a date then 💕</h2>
+      <p>
+        Date: 9 August 2025 (Obviously)<br>
+        Time: Around 3:30 PM<br>
+        Dresscode: Something Black that matches me!!
+      </p>
+    </div>
   </div>
 
   <!-- Flying creatures -->
@@ -172,4 +181,3 @@
   </script>
 </body>
 </html>
-
